@@ -3,10 +3,18 @@
   "short_name": "Samudera Kepri",
   "start_url": "./index.html",
   "display": "standalone",
+  "orientation": "portrait",
   "background_color": "#003366",
   "theme_color": "#003366",
   "description": "Portal Berita Resmi dan Terpercaya Kepulauan Riau",
+  "id": "/samudera-kepri-app/",
   "icons": [
+    {
+      "src": "logo_3d.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
     {
       "src": "logo_3d.png",
       "sizes": "512x512",

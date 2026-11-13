@@ -43,9 +43,9 @@
                 <span class="bg-red-600/80 text-white text-[10px] font-extrabold px-3 py-1 rounded-full uppercase tracking-widest shadow-lg">Portal Berita Kepri</span>
             </div>
 
-            <!-- Logo 3D Utama di Tengah -->
+            <!-- Logo 3D Utama di Tengah (Diperbaiki ke .png) -->
             <div class="relative z-10 flex flex-col items-center animate-pulse">
-                <img src="logo_3d.jpg" alt="Logo Samudera Kepri" class="w-36 h-36 object-contain drop-shadow-2xl rounded-full bg-white/10 p-2 border border-white/20">
+                <img src="logo_3d.png" alt="Logo Samudera Kepri" class="w-36 h-36 object-contain drop-shadow-2xl rounded-full bg-white/10 p-2 border border-white/20">
                 <h2 class="text-white font-black text-2xl tracking-wider mt-4 drop-shadow-md">SAMUDERA KEPRI</h2>
                 <p class="text-blue-100 text-xs mt-1 font-medium tracking-wide">Informasi Terpercaya & Akurat</p>
             </div>
@@ -53,7 +53,7 @@
             <!-- Loading Otomatis -->
             <div class="relative z-10 pb-8 w-full text-center">
                 <div class="inline-block w-8 h-8 border-4 border-white border-t-transparent rounded-full animate-spin mb-4"></div>
-                <p class="text-white/80 text-xs font-semibold">Memuat Website Utama...</p>
+                <p class="text-white/80 text-xs font-semibold">Mengarahkan ke Website Utama...</p>
             </div>
         </div>
 
@@ -64,23 +64,30 @@
             
             <!-- Header Utama dengan Logo Teks Resmi -->
             <header class="bg-[#003366] text-white px-4 py-3 flex justify-between items-center z-20 shadow-md flex-shrink-0">
-                <div class="flex items-center gap-2 cursor-pointer" onclick="reloadWeb()">
+                <div class="flex items-center gap-2 cursor-pointer" onclick="window.location.href='https://www.samuderakepri.co.id'">
                     <img src="logo_teks.png" alt="Samudera Kepri Logo" class="h-8 object-contain bg-white rounded px-1.5 py-0.5">
                 </div>
                 <div class="flex gap-3 items-center">
                     <button onclick="openArticle()" class="hover:text-blue-200 transition text-white" title="Menu Investigasi Eksklusif"><i class="fa-solid fa-lock text-lg"></i></button>
-                    <button onclick="reloadWeb()" class="hover:text-blue-200 transition text-white" title="Muat Ulang Halaman"><i class="fa-solid fa-rotate text-lg"></i></button>
+                    <button onclick="window.location.href='https://www.samuderakepri.co.id'" class="hover:text-blue-200 transition text-white" title="Buka Web Utama"><i class="fa-solid fa-globe text-lg"></i></button>
                 </div>
             </header>
 
-            <!-- Konten Utama: Website Asli langsung dimuat di dalam aplikasi via Iframe -->
-            <main class="flex-1 relative w-full h-full pb-16">
-                <iframe id="main-webview" src="https://www.samuderakepri.co.id" class="w-full h-full border-0"></iframe>
+            <!-- Konten Utama: Mengarahkan langsung secara mulus ke samuderakepri.co.id -->
+            <main class="flex-1 relative w-full h-full pb-16 bg-white flex flex-col items-center justify-center p-6 text-center">
+                <div class="max-w-xs space-y-4">
+                    <img src="logo_3d.png" alt="Logo" class="w-20 h-20 mx-auto object-contain rounded-full shadow-md">
+                    <h3 class="text-gray-800 font-bold text-lg">Samudera Kepri Terhubung</h3>
+                    <p class="text-gray-500 text-xs leading-relaxed">Aplikasi Anda kini terhubung langsung dengan portal berita utama secara real-time.</p>
+                    <a href="https://www.samuderakepri.co.id" class="inline-block w-full bg-[#003366] text-white font-bold text-sm py-3 px-4 rounded-xl shadow hover:bg-blue-900 transition">
+                        Buka Website Utama <i class="fa-solid fa-arrow-right ml-1"></i>
+                    </a>
+                </div>
             </main>
 
             <!-- Bottom Navigation Bar -->
             <nav class="bg-white border-t border-gray-200 absolute bottom-0 w-full z-20 flex justify-between px-6 py-3 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.05)] pb-safe">
-                <button onclick="reloadWeb()" class="flex flex-col items-center text-[#003366]">
+                <button onclick="window.location.href='https://www.samuderakepri.co.id'" class="flex flex-col items-center text-[#003366]">
                     <i class="fa-solid fa-house text-xl mb-1"></i>
                     <span class="text-[10px] font-semibold">Beranda</span>
                 </button>
@@ -173,13 +180,15 @@
 
     <!-- JavaScript Interaksi & Logika -->
     <script>
-        // Simulasi Durasi Splash Screen (Hilang otomatis setelah 2.5 detik)
+        // Simulasi Durasi Splash Screen, setelah itu langsung redirect otomatis ke web utama
         window.addEventListener('load', () => {
             setTimeout(() => {
                 const splash = document.getElementById('splash-screen');
                 splash.style.opacity = '0';
                 setTimeout(() => {
                     splash.style.display = 'none';
+                    // Langsung buka website utama secara otomatis setelah splash screen selesai
+                    window.location.href = "https://www.samuderakepri.co.id";
                 }, 700);
             }, 2500);
         });
@@ -196,11 +205,6 @@
         function closeArticle() {
             articleView.classList.add('translate-x-full');
             homeView.classList.remove('-translate-x-10', 'opacity-50');
-        }
-
-        function reloadWeb() {
-            const iframe = document.getElementById('main-webview');
-            iframe.src = iframe.src;
         }
 
         // Fungsi Tombol Paywall ke WhatsApp Redaksi

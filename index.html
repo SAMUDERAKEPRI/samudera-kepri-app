@@ -1,270 +1,212 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Samudera Kepri - Portal Berita Resmi</title>
-    
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- FontAwesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <!-- Google Fonts: Inter -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-    
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #e2e8f0;
-        }
-        .scrollbar-hide::-webkit-scrollbar {
-            display: none;
-        }
-        .scrollbar-hide {
-            -ms-overflow-style: none;
-            scrollbar-width: none;
-        }
-        .fade-out-text {
-            mask-image: linear-gradient(to bottom, black 20%, transparent 100%);
-            -webkit-mask-image: linear-gradient(to bottom, black 20%, transparent 100%);
-        }
-    </style>
-</head>
-<body class="flex items-center justify-center min-h-screen">
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com"></script>
 
-    <!-- Kontainer Aplikasi (Simulasi Layar Ponsel) -->
-    <div class="relative w-full max-w-[400px] h-[100dvh] sm:h-[850px] bg-gray-50 overflow-hidden sm:rounded-[2.5rem] sm:border-[8px] border-gray-900 shadow-2xl flex flex-col">
+<!-- FontAwesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-        <!-- ============================== -->
-        <!-- VIEW 0: SPLASH SCREEN          -->
-        <!-- ============================== -->
-        <div id="splash-screen" class="absolute inset-0 z-50 flex flex-col items-center justify-between p-8 transition-opacity duration-700" style="background: url('bg_splash.jpg') center/cover no-repeat;">
-            <div class="absolute inset-0 bg-black/40 backdrop-blur-[2px]"></div>
-            
-            <div class="relative z-10 pt-16 text-center">
-                <span class="bg-red-600/80 text-white text-[10px] font-extrabold px-3 py-1 rounded-full uppercase tracking-widest shadow-lg">Breaking News Kepri</span>
-            </div>
+<!-- Google Fonts: Inter -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
 
-            <!-- Logo 3D Utama di Tengah -->
-            <div class="relative z-10 flex flex-col items-center animate-pulse">
-                <img src="logo_3d.jpg" alt="Logo Samudera Kepri" class="w-36 h-36 object-contain drop-shadow-2xl rounded-full bg-white/10 p-2 border border-white/20">
-                <h2 class="text-white font-black text-2xl tracking-wider mt-4 drop-shadow-md">SAMUDERA KEPRI</h2>
-                <p class="text-blue-100 text-xs mt-1 font-medium tracking-wide">Informasi Terpercaya & Akurat</p>
-            </div>
+<style>
+    body {
+        font-family: 'Inter', sans-serif;
+        background-color: #e2e8f0;
+    }
+    .scrollbar-hide::-webkit-scrollbar {
+        display: none;
+    }
+    .scrollbar-hide {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+    .fade-out-text {
+        mask-image: linear-gradient(to bottom, black 20%, transparent 100%);
+        -webkit-mask-image: linear-gradient(to bottom, black 20%, transparent 100%);
+    }
+</style>
 
-            <!-- Loading Otomatis -->
-            <div class="relative z-10 pb-8 w-full text-center">
-                <div class="inline-block w-8 h-8 border-4 border-white border-t-transparent rounded-full animate-spin mb-4"></div>
-                <p class="text-white/80 text-xs font-semibold">Memuat Berita Kepulauan Riau...</p>
-            </div>
+
+<!-- Kontainer Aplikasi (Simulasi Layar Ponsel) -->
+<div class="relative w-full max-w-[400px] h-[100dvh] sm:h-[850px] bg-gray-50 overflow-hidden sm:rounded-[2.5rem] sm:border-[8px] border-gray-900 shadow-2xl flex flex-col">
+
+    <!-- ============================== -->
+    <!-- VIEW 0: SPLASH SCREEN          -->
+    <!-- ============================== -->
+    <div id="splash-screen" class="absolute inset-0 z-50 flex flex-col items-center justify-between p-8 transition-opacity duration-700" style="background: url('bg_splash.jpg') center/cover no-repeat;">
+        <div class="absolute inset-0 bg-black/40 backdrop-blur-[2px]"></div>
+        
+        <div class="relative z-10 pt-16 text-center">
+            <span class="bg-red-600/80 text-white text-[10px] font-extrabold px-3 py-1 rounded-full uppercase tracking-widest shadow-lg">Breaking News Kepri</span>
         </div>
 
-        <!-- ============================== -->
-        <!-- VIEW 1: BERANDA (HOME SCREEN)  -->
-        <!-- ============================== -->
-        <div id="home-view" class="flex flex-col h-full w-full absolute inset-0 z-10 transition-transform duration-300 transform translate-x-0 bg-gray-50">
-            
-            <!-- Header Utama dengan Logo Teks Resmi -->
-            <header class="bg-[#003366] text-white px-4 py-3 flex justify-between items-center z-20 shadow-md flex-shrink-0">
-                <div class="flex items-center gap-2 cursor-pointer" onclick="window.open('https://www.samuderakepri.co.id', '_blank')">
-                    <img src="logo_teks.png" alt="Samudera Kepri Logo" class="h-8 object-contain bg-white rounded px-1.5 py-0.5">
-                </div>
-                <div class="flex gap-3 items-center">
-                    <a href="https://www.samuderakepri.co.id" target="_blank" class="hover:text-blue-200 transition text-white" title="Buka Website Resmi"><i class="fa-solid fa-globe text-lg"></i></a>
-                    <button onclick="window.open('https://www.samuderakepri.co.id', '_blank')" class="hover:text-blue-200 transition text-white"><i class="fa-solid fa-wallet text-lg"></i></button>
-                </div>
-            </header>
-
-            <!-- Konten Beranda (Bisa di-scroll) -->
-            <main class="flex-1 overflow-y-auto pb-20">
-                
-                <!-- Hero Section (Headline - Klik membuka web utama / artikel terkait) -->
-                <div class="relative h-64 w-full cursor-pointer group" onclick="window.open('https://www.samuderakepri.co.id', '_blank')">
-                    <img src="https://placehold.co/600x400/1e293b/ffffff?text=Portal+Samudera+Kepri" alt="Headline" class="w-full h-full object-cover">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent"></div>
-                    <div class="absolute bottom-0 left-0 p-4 w-full">
-                        <span class="inline-block bg-red-600 text-white text-xs font-bold px-2 py-1 rounded mb-2 shadow">PORTAL UTAMA</span>
-                        <h2 class="text-white font-bold text-xl leading-tight group-hover:text-blue-200 transition">Kunjungi Portal Berita Resmi SamuderaKepri.co.id untuk Informasi Terkini</h2>
-                        <div class="flex items-center gap-2 text-gray-300 text-xs mt-2">
-                            <i class="fa-regular fa-clock"></i> Update Real-Time
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Menu Kategori (Terhubung ke Kategori Web Utama) -->
-                <div class="flex overflow-x-auto gap-2 p-4 border-b bg-white shadow-sm scrollbar-hide sticky top-0 z-10">
-                    <a href="https://www.samuderakepri.co.id" target="_blank" class="px-4 py-1.5 rounded-full bg-[#003366] text-white text-sm font-semibold whitespace-nowrap shadow-md">Terkini</a>
-                    <a href="https://www.samuderakepri.co.id" target="_blank" class="px-4 py-1.5 rounded-full bg-gray-100 text-gray-700 hover:bg-gray-200 text-sm font-medium whitespace-nowrap transition">Kepri</a>
-                    <a href="https://www.samuderakepri.co.id" target="_blank" class="px-4 py-1.5 rounded-full bg-gray-100 text-gray-700 hover:bg-gray-200 text-sm font-medium whitespace-nowrap transition">Investigasi</a>
-                    <a href="https://www.samuderakepri.co.id" target="_blank" class="px-4 py-1.5 rounded-full bg-gray-100 text-gray-700 hover:bg-gray-200 text-sm font-medium whitespace-nowrap transition">Hukum</a>
-                    <a href="https://www.samuderakepri.co.id" target="_blank" class="px-4 py-1.5 rounded-full bg-gray-100 text-gray-700 hover:bg-gray-200 text-sm font-medium whitespace-nowrap transition">Opini</a>
-                </div>
-
-                <!-- Daftar Berita (News Feed - Mengarah ke Investigasi / Paywall atau Berita Asli) -->
-                <div class="flex flex-col p-4 gap-5 bg-white min-h-screen">
-                    
-                    <!-- Item Berita 1 (Memicu Simulasi Paywall Investigasi Eksklusif) -->
-                    <article class="flex gap-4 cursor-pointer group" onclick="openArticle()">
-                        <div class="w-24 h-24 rounded-lg overflow-hidden flex-shrink-0 bg-gray-200">
-                            <img src="https://placehold.co/150x150/8b0000/ffffff?text=Eksklusif" alt="Thumb" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
-                        </div>
-                        <div class="flex flex-col justify-center">
-                            <span class="text-[10px] text-red-600 font-bold uppercase">Laporan Eksklusif</span>
-                            <h3 class="font-bold text-gray-900 text-sm leading-snug group-hover:text-[#003366]">Telaah Dokumen BPK atas Keuangan Daerah: Menguak Temuan Tata Kelola Aset</h3>
-                            <span class="text-xs text-gray-500 mt-1"><i class="fa-regular fa-clock mr-1"></i> Bedah Gelar Fakta</span>
-                        </div>
-                    </article>
-
-                    <!-- Item Berita 2 (Membuka langsung ke website utama) -->
-                    <article class="flex gap-4 cursor-pointer group" onclick="window.open('https://www.samuderakepri.co.id', '_blank')">
-                        <div class="w-24 h-24 rounded-lg overflow-hidden flex-shrink-0 bg-gray-200">
-                            <img src="https://placehold.co/150x150/0f172a/ffffff?text=News" alt="Thumb" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
-                        </div>
-                        <div class="flex flex-col justify-center">
-                            <span class="text-[10px] text-blue-600 font-bold uppercase">Pemerintahan</span>
-                            <h3 class="font-bold text-gray-900 text-sm leading-snug group-hover:text-[#003366]">Informasi & Kebijakan Publik Terbaru di Wilayah Kepulauan Riau</h3>
-                            <span class="text-xs text-gray-500 mt-1"><i class="fa-regular fa-clock mr-1"></i> Baca di Web Utama</span>
-                        </div>
-                    </article>
-
-                    <div class="text-center py-6">
-                        <a href="https://www.samuderakepri.co.id" target="_blank" class="inline-block bg-[#003366] text-white text-xs font-bold px-6 py-3 rounded-full shadow hover:bg-blue-900 transition">
-                            Lihat Semua Berita di Website Utama <i class="fa-solid fa-arrow-right ml-1"></i>
-                        </a>
-                    </div>
-                </div>
-            </main>
-
-            <!-- Bottom Navigation Bar -->
-            <nav class="bg-white border-t border-gray-200 absolute bottom-0 w-full z-20 flex justify-between px-6 py-3 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.05)] pb-safe">
-                <button onclick="window.location.reload()" class="flex flex-col items-center text-[#003366]">
-                    <i class="fa-solid fa-house text-xl mb-1"></i>
-                    <span class="text-[10px] font-semibold">Beranda</span>
-                </button>
-                <button onclick="window.open('https://www.samuderakepri.co.id', '_blank')" class="flex flex-col items-center text-gray-400 hover:text-[#003366] transition">
-                    <i class="fa-solid fa-magnifying-glass-chart text-xl mb-1"></i>
-                    <span class="text-[10px] font-semibold">Gelar Fakta</span>
-                </button>
-                <button onclick="window.open('https://www.samuderakepri.co.id', '_blank')" class="flex flex-col items-center text-gray-400 hover:text-[#003366] transition">
-                    <i class="fa-regular fa-bookmark text-xl mb-1"></i>
-                    <span class="text-[10px] font-semibold">Tersimpan</span>
-                </button>
-                <button onclick="window.open('https://www.samuderakepri.co.id', '_blank')" class="flex flex-col items-center text-gray-400 hover:text-[#003366] transition">
-                    <i class="fa-regular fa-user text-xl mb-1"></i>
-                    <span class="text-[10px] font-semibold">Profil</span>
-                </button>
-            </nav>
+        <!-- Logo 3D Utama di Tengah -->
+        <div class="relative z-10 flex flex-col items-center animate-pulse">
+            <img src="logo_3d.jpg" alt="Logo Samudera Kepri" class="w-36 h-36 object-contain drop-shadow-2xl rounded-full bg-white/10 p-2 border border-white/20">
+            <h2 class="text-white font-black text-2xl tracking-wider mt-4 drop-shadow-md">SAMUDERA KEPRI</h2>
+            <p class="text-blue-100 text-xs mt-1 font-medium tracking-wide">Informasi Terpercaya & Akurat</p>
         </div>
 
-        <!-- ============================== -->
-        <!-- VIEW 2: ARTIKEL & PAYWALL      -->
-        <!-- ============================== -->
-        <div id="article-view" class="flex flex-col h-full w-full absolute inset-0 z-30 bg-white transition-transform duration-300 transform translate-x-full shadow-2xl">
-            
-            <!-- Header Artikel -->
-            <header class="bg-white border-b border-gray-100 p-4 flex justify-between items-center z-40 sticky top-0">
-                <button onclick="closeArticle()" class="w-10 h-10 rounded-full bg-gray-100 text-gray-800 flex items-center justify-center hover:bg-gray-200 transition">
-                    <i class="fa-solid fa-arrow-left"></i>
-                </button>
-                <div class="flex gap-3">
-                    <button onclick="window.open('https://www.samuderakepri.co.id', '_blank')" class="w-10 h-10 rounded-full text-gray-600 hover:text-[#003366] transition" title="Buka di Browser"><i class="fa-solid fa-globe"></i></button>
-                </div>
-            </header>
-
-            <!-- Konten Artikel -->
-            <main class="flex-1 overflow-y-auto pb-10 relative">
-                <div class="w-full h-56 bg-gray-200 relative">
-                    <img src="https://placehold.co/600x400/8b0000/ffffff?text=Dokumen+Rahasia" alt="Cover" class="w-full h-full object-cover">
-                    <div class="absolute bottom-2 right-2 bg-black/60 text-white text-[10px] px-2 py-1 rounded">Foto: Tim Investigasi</div>
-                </div>
-
-                <div class="p-5">
-                    <span class="text-[#003366] font-bold text-xs uppercase tracking-wider">Investigasi / Bedah Gelar Fakta</span>
-                    <h1 class="text-2xl font-black text-gray-900 mt-2 mb-3 leading-tight">Telaah Dokumen BPK atas Keuangan Bintan TA 2025: Menguak Temuan Tata Kelola Aset & Retribusi</h1>
-                    
-                    <div class="flex items-center gap-3 mb-6 border-b border-gray-100 pb-4">
-                        <div class="w-10 h-10 rounded-full bg-[#003366] flex items-center justify-center text-white font-bold">R</div>
-                        <div>
-                            <p class="text-sm font-semibold text-gray-800">Redaksi Samudera Kepri</p>
-                            <p class="text-xs text-gray-500">11 November 2026 • 5 menit baca</p>
-                        </div>
-                    </div>
-
-                    <div class="text-gray-800 text-[15px] leading-relaxed space-y-4">
-                        <p><strong>BINTAN, SAMUDERAKEPRI</strong> — Tata kelola keuangan dan penataan aset di lingkup Pemerintah Kabupaten (Pemkab) Bintan Tahun Anggaran (TA) 2025 menjadi sorotan publik. Berdasarkan dokumen resmi Laporan Hasil Pemeriksaan (LHP) BPK RI, ditemukan sejumlah catatan krusial mengenai ketidakpatuhan administrasi.</p>
-                        
-                        <p>Guna memenuhi asas keberimbangan berita sesuai Kode Etik Jurnalistik, Redaksi telah melayangkan surat konfirmasi resmi terkait tindak lanjut atas temuan tersebut kepada Pemerintah Kabupaten Bintan.</p>
-                        
-                        <div class="fade-out-text h-40">
-                            <p>Berikut adalah rincian fakta berdasarkan data sekunder dan dokumen resmi yang dihimpun oleh Tim Investigasi Redaksi mengenai aliran dana retribusi parkir yang tidak disetorkan secara penuh ke Kas Daerah...</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- KOTAK PAYWALL (WhatsApp Integration dengan Nomor Resmi Anda) -->
-                <div class="absolute bottom-0 left-0 w-full bg-gradient-to-t from-white via-white to-transparent pt-12 pb-8 px-5">
-                    <div class="bg-gray-900 rounded-2xl p-6 shadow-2xl border border-gray-700 relative overflow-hidden">
-                        <div class="absolute top-0 right-0 opacity-10">
-                            <i class="fa-solid fa-lock text-9xl -mt-4 -mr-4"></i>
-                        </div>
-                        
-                        <div class="relative z-10">
-                            <div class="inline-flex items-center gap-2 bg-red-600/20 text-red-400 border border-red-500/30 px-3 py-1 rounded-full text-xs font-bold mb-3">
-                                <i class="fa-solid fa-lock text-[10px]"></i> KONTEN EKSKLUSIF BERBAYAR
-                            </div>
-                            
-                            <h3 class="text-white font-bold text-lg leading-tight mb-2">Buka Kunci Laporan Lengkap</h3>
-                            <p class="text-gray-400 text-xs mb-5 leading-relaxed">Laporan investigasi dan data forensik ini dilindungi secara eksklusif. Dapatkan akses penuh sekarang.</p>
-                            
-                            <!-- Tombol WhatsApp Paywall (Nomor: 6281276520021) -->
-                            <button onclick="handleWhatsAppPaywall()" class="w-full bg-[#00aa5b] hover:bg-[#008f4c] text-white font-bold py-3.5 px-4 rounded-xl shadow-lg transition transform hover:scale-[1.02] flex items-center justify-center gap-3">
-                                <i class="fa-brands fa-whatsapp text-xl"></i> Buka Kunci via WhatsApp (Rp 2.000.000)
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </main>
+        <!-- Loading Otomatis -->
+        <div class="relative z-10 pb-8 w-full text-center">
+            <div class="inline-block w-8 h-8 border-4 border-white border-t-transparent rounded-full animate-spin mb-4"></div>
+            <p class="text-white/80 text-xs font-semibold">Memuat Berita Kepulauan Riau...</p>
         </div>
-
     </div>
 
-    <!-- JavaScript Interaksi & Logika -->
-    <script>
-        // Simulasi Durasi Splash Screen (Hilang otomatis setelah 2.5 detik)
-        window.addEventListener('load', () => {
+    <!-- ============================== -->
+    <!-- VIEW 1: BERANDA (HOME SCREEN)  -->
+    <!-- ============================== -->
+    <div id="home-view" class="flex flex-col h-full w-full absolute inset-0 z-10 transition-transform duration-300 transform translate-x-0 bg-gray-50">
+        
+        <!-- Header Utama dengan Logo Teks Resmi -->
+        <header class="bg-[#003366] text-white px-4 py-3 flex justify-between items-center z-20 shadow-md flex-shrink-0">
+            <div class="flex items-center gap-2 cursor-pointer" onclick="refreshApp()">
+                <img src="logo_teks.png" alt="Samudera Kepri Logo" class="h-8 object-contain bg-white rounded px-1.5 py-0.5">
+            </div>
+            <div class="flex gap-3 items-center">
+                <button onclick="openArticle()" class="bg-red-600 hover:bg-red-700 text-white text-xs font-bold px-2.5 py-1 rounded-full shadow flex items-center gap-1 transition">
+                    <i class="fa-solid fa-lock text-[10px]"></i> Investigasi
+                </button>
+                <button onclick="window.open('https://www.samuderakepri.co.id', '_blank')" class="hover:text-blue-200 transition text-white" title="Buka Browser"><i class="fa-solid fa-globe text-lg"></i></button>
+            </div>
+        </header>
+
+        <!-- Konten Utama (Memuat Langsung Web Utama via Iframe) -->
+        <main class="flex-1 overflow-hidden relative bg-white">
+            <iframe src="https://www.samuderakepri.co.id" class="w-full h-full border-0" title="Portal Samudera Kepri"></iframe>
+        </main>
+
+        <!-- Bottom Navigation Bar -->
+        <nav class="bg-white border-t border-gray-200 absolute bottom-0 w-full z-20 flex justify-between px-6 py-3 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.05)] pb-safe">
+            <button onclick="refreshApp()" class="flex flex-col items-center text-[#003366]">
+                <i class="fa-solid fa-house text-xl mb-1"></i>
+                <span class="text-[10px] font-semibold">Beranda</span>
+            </button>
+            <button onclick="openArticle()" class="flex flex-col items-center text-gray-400 hover:text-[#003366] transition">
+                <i class="fa-solid fa-magnifying-glass-chart text-xl mb-1"></i>
+                <span class="text-[10px] font-semibold">Investigasi</span>
+            </button>
+            <button onclick="window.open('https://www.samuderakepri.co.id', '_blank')" class="flex flex-col items-center text-gray-400 hover:text-[#003366] transition">
+                <i class="fa-regular fa-bookmark text-xl mb-1"></i>
+                <span class="text-[10px] font-semibold">Tersimpan</span>
+            </button>
+            <button onclick="window.open('https://www.samuderakepri.co.id', '_blank')" class="flex flex-col items-center text-gray-400 hover:text-[#003366] transition">
+                <i class="fa-regular fa-user text-xl mb-1"></i>
+                <span class="text-[10px] font-semibold">Profil</span>
+            </button>
+        </nav>
+    </div>
+
+    <!-- ============================== -->
+    <!-- VIEW 2: ARTIKEL & PAYWALL      -->
+    <!-- ============================== -->
+    <div id="article-view" class="flex flex-col h-full w-full absolute inset-0 z-30 bg-white transition-transform duration-300 transform translate-x-full shadow-2xl">
+        
+        <!-- Header Artikel -->
+        <header class="bg-white border-b border-gray-100 p-4 flex justify-between items-center z-40 sticky top-0">
+            <button onclick="closeArticle()" class="w-10 h-10 rounded-full bg-gray-100 text-gray-800 flex items-center justify-center hover:bg-gray-200 transition">
+                <i class="fa-solid fa-arrow-left"></i>
+            </button>
+            <div class="flex gap-3">
+                <button onclick="window.open('https://www.samuderakepri.co.id', '_blank')" class="w-10 h-10 rounded-full text-gray-600 hover:text-[#003366] transition" title="Buka di Browser"><i class="fa-solid fa-globe"></i></button>
+            </div>
+        </header>
+
+        <!-- Konten Artikel -->
+        <main class="flex-1 overflow-y-auto pb-32 relative">
+            <div class="w-full h-56 bg-gray-200 relative">
+                <img src="https://placehold.co/600x400/8b0000/ffffff?text=Dokumen+Rahasia" alt="Cover" class="w-full h-full object-cover">
+                <div class="absolute bottom-2 right-2 bg-black/60 text-white text-[10px] px-2 py-1 rounded">Foto: Tim Investigasi</div>
+            </div>
+
+            <div class="p-5">
+                <span class="text-[#003366] font-bold text-xs uppercase tracking-wider">Investigasi / Bedah Gelar Fakta</span>
+                <h1 class="text-2xl font-black text-gray-900 mt-2 mb-3 leading-tight">Telaah Dokumen BPK atas Keuangan Bintan TA 2025: Menguak Temuan Tata Kelola Aset & Retribusi</h1>
+                
+                <div class="flex items-center gap-3 mb-6 border-b border-gray-100 pb-4">
+                    <div class="w-10 h-10 rounded-full bg-[#003366] flex items-center justify-center text-white font-bold">R</div>
+                    <div>
+                        <p class="text-sm font-semibold text-gray-800">Redaksi Samudera Kepri</p>
+                        <p class="text-xs text-gray-500">11 November 2026 • 5 menit baca</p>
+                    </div>
+                </div>
+
+                <div class="text-gray-800 text-[15px] leading-relaxed space-y-4">
+                    <p><strong>BINTAN, SAMUDERAKEPRI</strong> — Tata kelola keuangan dan penataan aset di lingkup Pemerintah Kabupaten (Pemkab) Bintan Tahun Anggaran (TA) 2025 menjadi sorotan publik. Berdasarkan dokumen resmi Laporan Hasil Pemeriksaan (LHP) BPK RI, ditemukan sejumlah catatan krusial mengenai ketidakpatuhan administrasi.</p>
+                    
+                    <p>Guna memenuhi asas keberimbangan berita sesuai Kode Etik Jurnalistik, Redaksi telah melayangkan surat konfirmasi resmi terkait tindak lanjut atas temuan tersebut kepada Pemerintah Kabupaten Bintan.</p>
+                    
+                    <div class="fade-out-text h-40">
+                        <p>Berikut adalah rincian fakta berdasarkan data sekunder dan dokumen resmi yang dihimpun oleh Tim Investigasi Redaksi mengenai aliran dana retribusi parkir yang tidak disetorkan secara penuh ke Kas Daerah...</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- KOTAK PAYWALL (WhatsApp Integration) -->
+            <div class="absolute bottom-0 left-0 w-full bg-gradient-to-t from-white via-white to-transparent pt-12 pb-8 px-5">
+                <div class="bg-gray-900 rounded-2xl p-6 shadow-2xl border border-gray-700 relative overflow-hidden">
+                    <div class="absolute top-0 right-0 opacity-10">
+                        <i class="fa-solid fa-lock text-9xl -mt-4 -mr-4"></i>
+                    </div>
+                    
+                    <div class="relative z-10">
+                        <div class="inline-flex items-center gap-2 bg-red-600/20 text-red-400 border border-red-500/30 px-3 py-1 rounded-full text-xs font-bold mb-3">
+                            <i class="fa-solid fa-lock text-[10px]"></i> KONTEN EKSKLUSIF BERBAYAR
+                        </div>
+                        
+                        <h3 class="text-white font-bold text-lg leading-tight mb-2">Buka Kunci Laporan Lengkap</h3>
+                        <p class="text-gray-400 text-xs mb-5 leading-relaxed">Laporan investigasi dan data forensik ini dilindungi secara eksklusif. Dapatkan akses penuh sekarang.</p>
+                        
+                        <!-- Tombol WhatsApp Paywall -->
+                        <button onclick="handleWhatsAppPaywall()" class="w-full bg-[#00aa5b] hover:bg-[#008f4c] text-white font-bold py-3.5 px-4 rounded-xl shadow-lg transition transform hover:scale-[1.02] flex items-center justify-center gap-3">
+                            <i class="fa-brands fa-whatsapp text-xl"></i> Buka Kunci via WhatsApp (Rp 2.000.000)
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+</div>
+
+<!-- JavaScript Interaksi & Logika -->
+<script>
+    // Simulasi Durasi Splash Screen (Hilang otomatis setelah 2.5 detik)
+    window.addEventListener('load', () => {
+        setTimeout(() => {
+            const splash = document.getElementById('splash-screen');
+            splash.style.opacity = '0';
             setTimeout(() => {
-                const splash = document.getElementById('splash-screen');
-                splash.style.opacity = '0';
-                setTimeout(() => {
-                    splash.style.display = 'none';
-                }, 700);
-            }, 2500);
-        });
+                splash.style.display = 'none';
+            }, 700);
+        }, 2500);
+    });
 
-        const homeView = document.getElementById('home-view');
-        const articleView = document.getElementById('article-view');
+    const homeView = document.getElementById('home-view');
+    const articleView = document.getElementById('article-view');
 
-        function openArticle() {
-            articleView.classList.remove('translate-x-full');
-            homeView.classList.add('-translate-x-10', 'opacity-50');
-            articleView.querySelector('main').scrollTop = 0;
-        }
+    function openArticle() {
+        articleView.classList.remove('translate-x-full');
+        homeView.classList.add('-translate-x-10', 'opacity-50');
+        articleView.querySelector('main').scrollTop = 0;
+    }
 
-        function closeArticle() {
-            articleView.classList.add('translate-x-full');
-            homeView.classList.remove('-translate-x-10', 'opacity-50');
-        }
+    function closeArticle() {
+        articleView.classList.add('translate-x-full');
+        homeView.classList.remove('-translate-x-10', 'opacity-50');
+    }
 
-        // Fungsi Tombol Paywall Langsung ke WhatsApp Redaksi (Nomor Resmi)
-        function handleWhatsAppPaywall() {
-            const phoneNumber = "6281276520021"; 
-            const message = "Halo Redaksi Samudera Kepri, saya ingin membuka akses laporan investigasi eksklusif senilai Rp 2.000.000.";
-            const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
-            
-            window.open(whatsappUrl, '_blank');
-        }
-    </script>
-</body>
-</html>
+    function refreshApp() {
+        const iframe = document.querySelector('iframe');
+        iframe.src = iframe.src;
+    }
+
+    // Fungsi Tombol Paywall Langsung ke WhatsApp Redaksi
+    function handleWhatsAppPaywall() {
+        const phoneNumber = "6281276520021"; 
+        const message = "Halo Redaksi Samudera Kepri, saya ingin membuka akses laporan investigasi eksklusif senilai Rp 2.000.000.";
+        const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+        
+        window.open(whatsappUrl, '_blank');
+    }
+</script>

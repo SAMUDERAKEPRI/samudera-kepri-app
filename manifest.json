@@ -7,6 +7,7 @@
   "background_color": "#003366",
   "theme_color": "#003366",
   "description": "Portal Berita Resmi dan Terpercaya Kepulauan Riau",
+  "categories": ["news", "education", "lifestyle"],
   "id": "/samudera-kepri-app/",
   "icons": [
     {

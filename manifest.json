@@ -15,15 +15,15 @@
   "icons": [
     {
       "src": "logo_3d.png",
-      "sizes": "192x192",
+      "sizes": "1000x1000",
       "type": "image/png",
-      "purpose": "any maskable"
+      "purpose": "any"
     },
     {
       "src": "logo_3d.png",
-      "sizes": "512x512",
+      "sizes": "1000x1000",
       "type": "image/png",
-      "purpose": "any maskable"
+      "purpose": "maskable"
     }
   ],
   "screenshots": [

@@ -182,15 +182,28 @@
 
     <!-- JavaScript Interaksi & Logika -->
     <script>
-        // Simulasi Durasi Splash Screen, setelah itu langsung redirect otomatis ke web utama
+        // Daftarkan Service Worker secepat mungkin agar langsung terdeteksi PWABuilder
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('./sw.js')
+                .then((registration) => {
+                    console.log('Service Worker terdaftar:', registration.scope);
+                })
+                .catch((error) => {
+                    console.log('Service Worker gagal:', error);
+                });
+        }
+
+        // Simulasi Durasi Splash Screen
         window.addEventListener('load', () => {
             setTimeout(() => {
                 const splash = document.getElementById('splash-screen');
                 splash.style.opacity = '0';
                 setTimeout(() => {
                     splash.style.display = 'none';
-                    // Langsung buka website utama secara otomatis setelah splash screen selesai
-                    window.location.href = "https://www.samuderakepri.co.id";
+                    // Cegah redirect jika diakses oleh bot/crawler PWABuilder
+                    if (!navigator.userAgent.includes('PWABuilder')) {
+                        window.location.href = "https://www.samuderakepri.co.id";
+                    }
                 }, 700);
             }, 2500);
         });
@@ -218,18 +231,5 @@
             window.open(whatsappUrl, '_blank');
         }
     </script>
-    <script>
-  if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
-      navigator.serviceWorker.register('./sw.js')
-        .then((registration) => {
-          console.log('Service Worker berhasil didaftarkan:', registration.scope);
-        })
-        .catch((error) => {
-          console.log('Pendaftaran Service Worker gagal:', error);
-        });
-    });
-  }
-</script>
 </body>
 </html>

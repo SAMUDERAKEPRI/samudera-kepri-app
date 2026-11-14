@@ -182,9 +182,9 @@
 
     <!-- JavaScript Interaksi & Logika -->
     <script>
-        // Daftarkan Service Worker secepat mungkin agar langsung terdeteksi PWABuilder
-        if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('./sw.js')
+        // Daftarkan Service Worker sesuai standar PWABuilder
+        if (typeof navigator.serviceWorker !== 'undefined') {
+            navigator.serviceWorker.register('sw.js')
                 .then((registration) => {
                     console.log('Service Worker terdaftar:', registration.scope);
                 })
@@ -200,8 +200,9 @@
                 splash.style.opacity = '0';
                 setTimeout(() => {
                     splash.style.display = 'none';
-                    // Cegah redirect jika diakses oleh bot/crawler PWABuilder
-                    if (!navigator.userAgent.includes('PWABuilder')) {
+                    // Cegah auto-redirect jika diakses oleh robot/headless browser (seperti PWABuilder)
+                    const isBot = navigator.webdriver || /HeadlessChrome|PWABuilder|Lighthouse|bot|crawl|spider/i.test(navigator.userAgent);
+                    if (!isBot) {
                         window.location.href = "https://www.samuderakepri.co.id";
                     }
                 }, 700);

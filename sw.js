@@ -1,22 +1,20 @@
-const CACHE_NAME = 'samudera-kepri-v1';
-const ASSETS_TO_CACHE = [
+const CACHE_NAME = 'samudera-kepri-v2';
+const PRECACHE_ASSETS = [
   './',
   './index.html',
   './manifest.json',
   './logo_3d.png'
 ];
 
-// Menginstal Service Worker dan menyimpan aset dasar ke cache
 self.addEventListener('install', (event) => {
   event.waitUntil(
     caches.open(CACHE_NAME).then((cache) => {
-      return cache.addAll(ASSETS_TO_CACHE);
+      return cache.addAll(PRECACHE_ASSETS);
     })
   );
   self.skipWaiting();
 });
 
-// Membersihkan cache lama jika ada pembaruan versi
 self.addEventListener('activate', (event) => {
   event.waitUntil(
     caches.keys().then((cacheNames) => {
@@ -32,15 +30,23 @@ self.addEventListener('activate', (event) => {
   self.clients.claim();
 });
 
-// Strategi Network-First: Utamakan jaringan internet, gunakan cache jika offline
 self.addEventListener('fetch', (event) => {
+  if (event.request.method !== 'GET') return;
+
   event.respondWith(
-    fetch(event.request)
-      .then((response) => {
-        return response;
-      })
-      .catch(() => {
-        return caches.match(event.request);
-      })
+    caches.open(CACHE_NAME).then((cache) => {
+      return cache.match(event.request).then((cachedResponse) => {
+        const fetchPromise = fetch(event.request)
+          .then((networkResponse) => {
+            if (networkResponse && networkResponse.status === 200) {
+              cache.put(event.request, networkResponse.clone());
+            }
+            return networkResponse;
+          })
+          .catch(() => cachedResponse);
+
+        return cachedResponse || fetchPromise;
+      });
+    })
   );
 });

@@ -1,7 +1,10 @@
 {
   "name": "Samudera Kepri",
   "short_name": "Samudera Kepri",
+  "lang": "id",
+  "dir": "ltr",
   "start_url": "./index.html",
+  "scope": "/samudera-kepri-app/",
   "display": "standalone",
   "orientation": "portrait",
   "background_color": "#003366",
@@ -21,6 +24,29 @@
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "screenshot1.png",
+      "sizes": "1080x1920",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "Beranda Utama Samudera Kepri"
+    },
+    {
+      "src": "screenshot2.png",
+      "sizes": "1080x1920",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "Baca Berita Terkini"
+    },
+    {
+      "src": "screenshot3.png",
+      "sizes": "1080x1920",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "Kategori Berita Kepulauan Riau"
     }
   ]
 }

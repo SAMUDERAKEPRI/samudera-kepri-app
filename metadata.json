@@ -1,0 +1,6 @@
+{
+  "name": "Samudera Kepri",
+  "description": "Aplikasi portal berita resmi Samudera Kepri dengan WebView teroptimasi, dukungan WhatsApp, dan navigasi cerdas.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

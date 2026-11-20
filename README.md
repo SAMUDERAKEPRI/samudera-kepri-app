@@ -5,11 +5,12 @@ Aplikasi mobile resmi **Samudera Kepri** (`com.samuderakepri`) untuk mengakses b
 🌐 **Situs Resmi:** [https://www.samuderakepri.co.id](https://www.samuderakepri.co.id)  
 📦 **Package Name:** `com.samuderakepri`  
 📱 **Platform:** Android (Minimum Android 7.0 / API 24)  
-🔖 **Versi Rilis Terkini:** `v2.0.1.0` (`versionCode` 3)
+🔖 **Versi Rilis Terkini:** `v2.0.2.0` (`versionCode` 4)
 
 ---
 
-## Fitur Utama
+## Fitur Utama & Pembaruan
+- **Integrasi Iklan Interstitial AdMob:** Dukungan penayangan iklan layar penuh pada jeda transisi yang wajar untuk mendukung operasional dan pengembangan konten berita.
 - **Akses Berita Cepat & Ringan:** Membaca berita terkini dan laporan investigasi **Bedah Gelar Fakta** dengan pemuatan halaman yang efisien dan hemat kuota.
 - **Integrasi Kanal Multimedia:** Memudahkan akses ke konten audio-video dan liputan khas Samudera Kepri.
 - **Terhubung dengan Domain Resmi:** Mendukung verifikasi tautan dan *Digital Asset Links* ke `https://www.samuderakepri.co.id`.
@@ -17,7 +18,7 @@ Aplikasi mobile resmi **Samudera Kepri** (`com.samuderakepri`) untuk mengakses b
 ---
 
 ## Cara Unduh & Instalasi
-1. Buka halaman **Releases** pada repositori ini dan unduh berkas instalasi resmi versi terbaru (`v2.0.1.0.apk`).
+1. Buka halaman **Releases** pada repositori ini dan unduh berkas instalasi resmi versi terbaru (`samuderakepri-v2.0.2.0.apk`).
 2. Buka berkas yang sudah diunduh melalui notifikasi peramban atau pengelola berkas (*File Manager*) di perangkat Android Anda.
 3. Jika muncul peringatan keamanan instalasi dari luar toko aplikasi bawaan, izinkan instalasi dari sumber tersebut lalu ketuk **Instal** (atau **Perbarui** bila versi lama sudah terpasang).
 
